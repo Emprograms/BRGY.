@@ -8,15 +8,11 @@
 
   <!-- Login background styles -->
   <style>
-    /* Apply a full-viewport background for the auth/login page.
-       NOTE: The Facebook URL provided is a page URL and may not load as a direct image.
-       Recommended: download the image and place it at assets/login-bg.jpg and use the local fallback below. */
+    /* Full-viewport background for the auth/login page */
     body.auth-bg {
       min-height: 100vh;
       margin: 0;
       background-image: url("assets/muni.jpg");
-      /* fallback / recommended local file (uncomment and use if you add the image to repo):
-         background-image: url("assets/login-bg.jpg"); */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -25,7 +21,7 @@
       justify-content: center;
     }
 
-    /* darkish overlay so content is readable */
+    /* dark overlay so content is readable */
     body.auth-bg::before {
       content: "";
       position: fixed;
@@ -35,14 +31,17 @@
       pointer-events: none;
     }
 
-    /* ensure main content sits above overlay */
+    /* ensure main content sits above overlay and is interactive */
     main.container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      pointer-events: auto;
     }
 
     /* make the card slightly translucent and add backdrop blur for readability */
     .card {
+      position: relative;
+      z-index: 3; /* guarantee it's above overlay */
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(6px);
       border-radius: 8px;
@@ -56,93 +55,110 @@
     @media (max-width: 640px) {
       .card { padding: 16px; }
     }
+
+    /* Small logo box inside the login card */
+    .logo-box {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 14px;
+      border-radius: 12px;
+      background-image: url("assets/logo.jpg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      background-color: rgba(255,255,255,0.6);
+      pointer-events: none; /* decorative only */
+    }
+
+    /* tabs/buttons in auth card */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 6px;
+      background: #eee;
+      cursor: pointer;
+    }
+    .tabs button.active {
+      background: #2b7cff;
+      color: #fff;
+    }
+
+    .form.hidden { display: none; }
+    .primary { background: #2b7cff; color: #fff; padding: 10px 12px; border: none; border-radius:6px; cursor:pointer; }
+    .secondary { background: #f3f3f3; color: #222; padding: 8px 10px; border: none; border-radius:6px; cursor:pointer; }
+
+    /* simple dashboard layout */
+    .content { display:flex; gap:16px; margin-top:16px; }
+    .officials { width:220px; background: rgba(255,255,255,0.85); padding:12px; border-radius:8px; }
+    .panel { flex:1; background: rgba(255,255,255,0.95); padding:12px; border-radius:8px;}
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .menu.hidden { display:none; }
+    .hamburger { cursor:pointer; width:28px; height:22px; display:flex; flex-direction:column; justify-content:space-between; }
+    .hamburger div { height:3px; background:#333; border-radius:2px; }
   </style>
 </head>
 <body class="auth-bg">
   
   <main class="container">
     <!-- Auth area -->
-    <section id="auth" class="card">
-      <div class="tabs">
-        <button id="show-login" class="active">Login</button>
-        <button id="show-register">Register</button>
+    <section id="auth" class="card" aria-labelledby="auth-heading">
+      <!-- small logo box using assets/logo.jpg -->
+      <div class="logo-box" aria-hidden="true"></div>
+
+      <div class="tabs" role="tablist" aria-label="Authentication tabs">
+        <button id="show-login" class="active" type="button" role="tab" aria-selected="true">Login</button>
+        <button id="show-register" type="button" role="tab" aria-selected="false">Register</button>
       </div>
 
-      <div id="login-form" class="form">
-        <h2>Login</h2>
-        <label>Email</label>
+      <div id="login-form" class="form" role="tabpanel">
+        <h2 id="auth-heading">Login</h2>
+        <label for="login-email">Email</label>
         <input id="login-email" type="email" placeholder="you@example.com" />
-        <label>Password</label>
+        <label for="login-password">Password</label>
         <input id="login-password" type="password" placeholder="password" />
-        <button id="login-btn" class="primary">Login</button>
+        <button id="login-btn" class="primary" type="button">Login</button>
         <p class="hint">No account? <a href="#" id="go-register">Register here</a></p>
       </div>
 
-      <div id="register-form" class="form hidden">
+      <div id="register-form" class="form hidden" role="tabpanel" aria-hidden="true">
         <h2>Register</h2>
-        <label>Full name</label>
+        <label for="reg-name">Full name</label>
         <input id="reg-name" type="text" placeholder="Juan Dela Cruz" />
-        <label>Email</label>
+        <label for="reg-email">Email</label>
         <input id="reg-email" type="email" placeholder="you@example.com" />
-        <label>Password</label>
+        <label for="reg-password">Password</label>
         <input id="reg-password" type="password" placeholder="password" />
-        <button id="register-btn" class="primary">Register</button>
+        <button id="register-btn" class="primary" type="button">Register</button>
         <p class="hint">Already have an account? <a href="#" id="go-login">Login</a></p>
       </div>
     </section>
 
     <!-- Dashboard -->
-    <section id="dashboard" class="hidden">
-      <style>
-    /* Apply a full-viewport background for the auth/login page.
-       NOTE: The Facebook URL provided is a page URL and may not load as a direct image.
-       Recommended: download the image and place it at assets/login-bg.jpg and use the local fallback below. */
-    body.auth-bg {
-      min-height: 100vh;
-      margin: 0;
-      background-image: url("assets/muni.jpg");
-      /* fallback / recommended local file (uncomment and use if you add the image to repo):
-         background-image: url("assets/login-bg.jpg"); */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* darkish overlay so content is readable */
-    body.auth-bg::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ensure main content sits above overlay */
-    main.container {
-      position: relative;
-      z-index: 1;
-    }
+    <section id="dashboard" class="hidden" aria-hidden="true">
       <header class="topbar">
         <h1>Barangay Officials</h1>
         <div class="top-actions">
           <div class="hamburger" id="hamburger" title="Menu" aria-label="Menu">
             <div></div><div></div><div></div>
           </div>
-          <button id="logout-btn" class="secondary">Logout</button>
+          <button id="logout-btn" class="secondary" type="button">Logout</button>
         </div>
-        <nav id="burger-menu" class="menu hidden">
+        <nav id="burger-menu" class="menu hidden" aria-hidden="true">
           <ul>
             <li data-view="updates">Accomplishments</li>
             <li data-view="ongoing">Ongoing Projects</li>
             <li data-view="permit">Permit Cost</li>
             <li data-view="clearance">Barangay Clearance</li>
             <li data-view="certificate">Barangay Certificate</li>
-            <li data-view="certificate">Cedula</li>
-            <li data-view="certificate">Certificate of Indigency</li>
+            <li data-view="cedula">Cedula</li>
+            <li data-view="indigency">Certificate of Indigency</li>
           </ul>
         </nav>
       </header>
@@ -156,7 +172,6 @@
           <h2 id="panel-title">Welcome</h2>
           <div id="panel-body">
             <p>Welcome to the Barangay Portal demo. Use the menu (top-right) to view sections.</p>
-
           </div>
         </section>
       </div>
@@ -165,24 +180,92 @@
 
   <script src="app.js"></script>
 
-  <!-- Small helper to remove the auth-bg class after login and add it back on logout.
-       This keeps the background only on the login/registration view. -->
+  <!-- Improved DOM wiring and click handling: use DOMContentLoaded to ensure listeners attach -->
   <script>
-    // Remove background when user clicks "Login" (adjust if your app handles auth differently)
-    const loginBtn = document.getElementById('login-btn');
-    if (loginBtn) {
-      loginBtn.addEventListener('click', () => {
-        document.body.classList.remove('auth-bg');
-      });
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      // Tab toggles for Login/Register
+      var showLoginBtn = document.getElementById('show-login');
+      var showRegisterBtn = document.getElementById('show-register');
+      var loginForm = document.getElementById('login-form');
+      var registerForm = document.getElementById('register-form');
+      var goRegisterLink = document.getElementById('go-register');
+      var goLoginLink = document.getElementById('go-login');
 
-    // Add background back on logout button click
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        document.body.classList.add('auth-bg');
-      });
-    }
+      function showLogin() {
+        if (showLoginBtn && showRegisterBtn) {
+          showLoginBtn.classList.add('active');
+          showRegisterBtn.classList.remove('active');
+          showLoginBtn.setAttribute('aria-selected', 'true');
+          showRegisterBtn.setAttribute('aria-selected', 'false');
+        }
+        if (loginForm && registerForm) {
+          loginForm.classList.remove('hidden');
+          loginForm.setAttribute('aria-hidden', 'false');
+          registerForm.classList.add('hidden');
+          registerForm.setAttribute('aria-hidden', 'true');
+        }
+      }
+      function showRegister() {
+        if (showRegisterBtn && showLoginBtn) {
+          showRegisterBtn.classList.add('active');
+          showLoginBtn.classList.remove('active');
+          showRegisterBtn.setAttribute('aria-selected', 'true');
+          showLoginBtn.setAttribute('aria-selected', 'false');
+        }
+        if (registerForm && loginForm) {
+          registerForm.classList.remove('hidden');
+          registerForm.setAttribute('aria-hidden', 'false');
+          loginForm.classList.add('hidden');
+          loginForm.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      if (showLoginBtn) showLoginBtn.addEventListener('click', showLogin);
+      if (showRegisterBtn) showRegisterBtn.addEventListener('click', showRegister);
+      if (goRegisterLink) goRegisterLink.addEventListener('click', function (e) { e.preventDefault(); showRegister(); });
+      if (goLoginLink) goLoginLink.addEventListener('click', function (e) { e.preventDefault(); showLogin(); });
+
+      // Login -> show dashboard and remove auth background
+      var loginBtn = document.getElementById('login-btn');
+      var authSection = document.getElementById('auth');
+      var dashboardSection = document.getElementById('dashboard');
+      if (loginBtn) {
+        loginBtn.addEventListener('click', function () {
+          // TODO: replace with proper auth flow
+          document.body.classList.remove('auth-bg');
+          if (authSection && dashboardSection) {
+            authSection.classList.add('hidden');
+            authSection.setAttribute('aria-hidden', 'true');
+            dashboardSection.classList.remove('hidden');
+            dashboardSection.setAttribute('aria-hidden', 'false');
+          }
+        });
+      }
+
+      // Logout -> show auth and add auth background back
+      var logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+          document.body.classList.add('auth-bg');
+          if (authSection && dashboardSection) {
+            dashboardSection.classList.add('hidden');
+            dashboardSection.setAttribute('aria-hidden', 'true');
+            authSection.classList.remove('hidden');
+            authSection.setAttribute('aria-hidden', 'false');
+          }
+        });
+      }
+
+      // Hamburger toggle for menu
+      var hamburger = document.getElementById('hamburger');
+      var burgerMenu = document.getElementById('burger-menu');
+      if (hamburger && burgerMenu) {
+        hamburger.addEventListener('click', function () {
+          var isHidden = burgerMenu.classList.toggle('hidden');
+          burgerMenu.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
+        });
+      }
+    });
   </script>
 </body>
 </html>
