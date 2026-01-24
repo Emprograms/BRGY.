@@ -2,12 +2,12 @@
 (() => {
   // Sample barangay officials data
   const officials = [
-    { name: "Punong Barangay: Rosa Santos", position: "Punong Barangay" },
-    { name: "Kagawad: Mario Cruz", position: "Kagawad - Peace & Order" },
-    { name: "Kagawad: Ana Lopez", position: "Kagawad - Health" },
-    { name: "Kagawad: Jun Reyes", position: "Kagawad - Infrastructure" },
-    { name: "Secretary: Liza Ramos", position: "Secretary" },
-    { name: "Treasurer: Mark Villanueva", position: "Treasurer" },
+    { name: "Punong Barangay: Sergio Tesorio", position: "Punong Barangay" },
+    { name: "Kagawad: Junior Hora", position: "Kagawad - Peace & Order" },
+    { name: "Kagawad: Allan Bolivar", position: "Kagawad - Health" },
+    { name: "Kagawad: Eleazar Dano", position: "Kagawad - Infrastructure" },
+    { name: "Secretary: Liza Ra", position: "Secretary" },
+    { name: "Treasurer: Jocelyn Langbid", position: "Treasurer" },
   ];
 
   // DOM
