@@ -160,7 +160,7 @@
   function showView(view){
     switch(view){
       case 'updates':
-        panelTitle.textContent = 'Updates of Projects';
+        panelTitle.textContent = 'Accomplishments';
         panelBody.innerHTML = `<p>Latest updates about projects will appear here. (placeholder)</p>`;
         break;
       case 'ongoing':
@@ -175,7 +175,7 @@
         `;
         break;
       case 'permit':
-        panelTitle.textContent = 'Permit Payers';
+        panelTitle.textContent = 'Permit Cost';
         panelBody.innerHTML = `
           <p>Permit payers list and summary (placeholder)</p>
           <table style="width:100%;border-collapse:collapse">
@@ -191,6 +191,14 @@
         break;
       case 'certificate':
         panelTitle.textContent = 'Barangay Certificate';
+        panelBody.innerHTML = `<p>Generate and manage barangay certificates here. (placeholder)</p>`;
+        break;
+        case 'Cedula':
+        panelTitle.textContent = 'Cedula';
+        panelBody.innerHTML = `<p>Generate and manage barangay certificates here. (placeholder)</p>`;
+        break;
+        case 'certificate':
+        panelTitle.textContent = 'Certificate of Indigency';
         panelBody.innerHTML = `<p>Generate and manage barangay certificates here. (placeholder)</p>`;
         break;
       default:
