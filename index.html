@@ -156,6 +156,24 @@
           <h2 id="panel-title">Welcome</h2>
           <div id="panel-body">
             <p>Welcome to the Barangay Portal demo. Use the menu (top-right) to view sections.</p>
+         <style>
+    /* Apply a full-viewport background for the auth/login page.
+       NOTE: The Facebook URL provided is a page URL and may not load as a direct image.
+       Recommended: download the image and place it at assets/login-bg.jpg and use the local fallback below. */
+    body.auth-bg {
+      min-height: 100vh;
+      margin: 0;
+      background-image: url("assets/muni.jpg");
+      /* fallback / recommended local file (uncomment and use if you add the image to repo):
+         background-image: url("assets/login-bg.jpg"); */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
           </div>
         </section>
       </div>
