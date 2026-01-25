@@ -14,11 +14,12 @@
 <script>
     // Create a new image element
     const img = document.createElement('img');
-    img.src = 'assets/muni.jpg'; // Specify image path
+    img.src = ('assets/logo.jpg'); // Specify image path
 
     // Append the image to the container
     document.getElementById('imageContainer').appendChild(img);
 </script>
+
   // DOM
   const authSection = document.getElementById('auth');
   const dashboard = document.getElementById('dashboard');
