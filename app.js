@@ -9,16 +9,6 @@
     { name: "Secretary: Liza Ra", position: "Secretary" },
     { name: "Treasurer: Jocelyn Langbid", position: "Treasurer" },
   ];
- <div id="imageContainer"></div>
-
-<script>
-    // Create a new image element
-    const img = document.createElement('img');
-    img.src = ('assets/logo.jpg'); // Specify image path
-
-    // Append the image to the container
-    document.getElementById('imageContainer').appendChild(img);
-</script>
 
   // DOM
   const authSection = document.getElementById('auth');
