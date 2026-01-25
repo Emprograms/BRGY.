@@ -90,40 +90,6 @@
         <p class="hint">Already have an account? <a href="#" id="go-login">Login</a></p>
       </div>
     </section>
-<style>
-    /* Apply a full-viewport background for the auth/login page.
-       NOTE: The Facebook URL provided is a page URL and may not load as a direct image.
-       Recommended: download the image and place it at assets/login-bg.jpg and use the local fallback below. */
-    body.auth-bg {
-      min-height: 100vh;
-      margin: 0;
-      background-image: url("assets/muni.jpg");
-      /* fallback / recommended local file (uncomment and use if you add the image to repo):
-         background-image: url("assets/login-bg.jpg"); */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* darkish overlay so content is readable */
-    body.auth-bg::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ensure main content sits above overlay */
-    main.container {
-      position: relative;
-      z-index: 1;
-    }
-  <style>
     <!-- Dashboard -->
     <section id="dashboard" class="hidden">
       <header class="topbar">
