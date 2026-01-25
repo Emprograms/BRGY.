@@ -131,27 +131,7 @@
   </main>
 
   <script src="app.js"></script>
-
-  <!-- Small helper to remove the auth-bg class after login and add it back on logout.
-       This keeps the background only on the login/registration view. -->
-  <script>
-    // Remove background when user clicks "Login" (adjust if your app handles auth differently)
-    const loginBtn = document.getElementById('login-btn');
-    if (loginBtn) {
-      loginBtn.addEventListener('click', () => {
-        document.body.classList.remove('auth-bg');
-      });
-    }
-
-    // Add background back on logout button click
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        document.body.classList.add('auth-bg');
-      });
-    }
-  </script>
-   <!-- Login background styles -->
+  <!-- Login background styles -->
   <style>
     /* Apply a full-viewport background for the auth/login page.
        NOTE: The Facebook URL provided is a page URL and may not load as a direct image.
@@ -202,5 +182,25 @@
       .card { padding: 16px; }
     }
   </style>
+
+  <!-- Small helper to remove the auth-bg class after login and add it back on logout.
+       This keeps the background only on the login/registration view. -->
+  <script>
+    // Remove background when user clicks "Login" (adjust if your app handles auth differently)
+    const loginBtn = document.getElementById('login-btn');
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => {
+        document.body.classList.remove('auth-bg');
+      });
+    }
+
+    // Add background back on logout button click
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        document.body.classList.add('auth-bg');
+      });
+    }
+  </script>
 </body>
 </html>
