@@ -141,58 +141,7 @@
         document.body.classList.remove('auth-bg');
       });
     }
-     <!-- Login background styles -->
-  <style>
-    /* Apply a full-viewport background for the auth/login page.
-       NOTE: The Facebook URL provided is a page URL and may not load as a direct image.
-       Recommended: download the image and place it at assets/login-bg.jpg and use the local fallback below. */
-    body.auth-bg {
-      min-height: 100vh;
-      margin: 0;
-      background-image: url("assets/muni.jpg");
-      /* fallback / recommended local file (uncomment and use if you add the image to repo):
-         background-image: url("assets/login-bg.jpg"); */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* darkish overlay so content is readable */
-    body.auth-bg::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ensure main content sits above overlay */
-    main.container {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* make the card slightly translucent and add backdrop blur for readability */
-    .card {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(6px);
-      border-radius: 8px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      padding: 20px;
-      max-width: 420px;
-      width: 95%;
-    }
-
-    /* tighten spacing for the auth area on small screens */
-    @media (max-width: 640px) {
-      .card { padding: 16px; }
-    }
-  </style>
-
+     
     // Add background back on logout button click
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
