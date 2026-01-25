@@ -2,7 +2,8 @@
 (() => {
   // Sample barangay officials data
   const officials = [
-    { name: "Punong Barangay: Sergio Tesorio", position: "Punong Barangay" },
+    { name: "Punong Barangay: Sergio Tesorio", position: "Punong Barangay" }, 
+    { img: 'assets/muni.jpg' },
     { name: "Kagawad: Junior Hora", position: "Kagawad - Peace & Order" },
     { name: "Kagawad: Allan Bolivar", position: "Kagawad - Health" },
     { name: "Kagawad: Eleazar Dano", position: "Kagawad - Infrastructure" },
