@@ -96,12 +96,23 @@
      <!-- Login background styles -->
   <style>
       background-image: url("assets/muni.jpg");
-    background-image: url('logo.muni'); /* Specify the path to your background image */
-            background-size: cover; /* Cover the entire viewport */
-            background-repeat: no-repeat; /* Prevent tiling */
-            background-position: center; /* Center the image */
+      body {
+            margin: 0;
+            display: flex;
             height: 100vh; /* Full height */
-            margin: 0; /* Remove default margin */
+            background-color: #f0f0f0; /* Optional light background */
+        }
+
+        /* Container for the red box */
+        #sidebar {
+            width: 250px; /* Adjust as needed */
+            background-image: url('logo.jpg'); /* Your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px; /* Spacing inside the sidebar */
+            color: white; /* Text color */
+        }
         }
   </style>
       <header class="topbar">
