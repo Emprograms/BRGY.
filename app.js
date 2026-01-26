@@ -161,12 +161,12 @@
     switch(view){
       case 'updates':
         panelTitle.textContent = 'Accomplishments';
-        panelBody.innerHTML = `<p>Latest updates about projects will appear here. (placeholder)</p>`;
+        panelBody.innerHTML = `<p>To be Announced</p>`;
         break;
       case 'ongoing':
         panelTitle.textContent = 'Ongoing Projects';
         panelBody.innerHTML = `
-          <p>List of ongoing projects:</p>
+          <p>To be Announced</p>
           <ul>
             <li>Road improvement - Phase 2</li>
             <li>Barangay health center rehabilitation</li>
@@ -177,29 +177,29 @@
       case 'permit':
         panelTitle.textContent = 'Permit Cost';
         panelBody.innerHTML = `
-          <p>Permit payers list and summary (placeholder)</p>
+          <p>Permit Rates (placeholder)</p>
           <table style="width:100%;border-collapse:collapse">
             <tr><th style="text-align:left">Name</th><th style="text-align:left">Permit</th><th>Amount</th></tr>
-            <tr><td>Marcos Dela Cruz</td><td>Business Permit</td><td>₱1,200</td></tr>
-            <tr><td>Carla Santos</td><td>Occupancy Permit</td><td>₱800</td></tr>
+            <tr><td>Grocery Store</td><td>Business Permit</td><td>₱1,200</td></tr>
+            <tr><td>Ticketing Business</td><td>Business Permit</td><td>₱500</td></tr>
           </table>
         `;
         break;
       case 'clearance':
         panelTitle.textContent = 'Barangay Clearance';
-        panelBody.innerHTML = `<p>Generate and manage barangay clearances here. (placeholder)</p>`;
+        panelBody.innerHTML = `<p>Generate and Manage Barangay Clearance.</p>`;
         break;
       case 'certificate':
         panelTitle.textContent = 'Barangay Certificate';
-        panelBody.innerHTML = `<p>Generate and manage barangay certificates here. (placeholder)</p>`;
+        panelBody.innerHTML = `<p>Generate and manage barangay certificates.</p>`;
         break;
         case 'Cedula':
         panelTitle.textContent = 'Cedula';
-        panelBody.innerHTML = `<p>Generate and manage barangay certificates here. (placeholder)</p>`;
+        panelBody.innerHTML = `<p>Generate and manage barangay certificates.</p>`;
         break;
         case 'certificate':
         panelTitle.textContent = 'Certificate of Indigency';
-        panelBody.innerHTML = `<p>Generate and manage barangay certificates here. (placeholder)</p>`;
+        panelBody.innerHTML = `<p>Generate and manage barangay certificates.</p>`;
         break;
       default:
         panelTitle.textContent = 'Welcome';
