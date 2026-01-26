@@ -7,7 +7,7 @@
     { name: "Kagawad: Allan Bolivar", position: "Kagawad - Health" },
     { name: "Kagawad: Eleazar Dano", position: "Kagawad - Infrastructure" },
     { name: "Kagawad: Ondoy Orehuela", position: "Kagawad - Environment" },
-    { name: "Secretary: Liza Ra", position: "Secretary" },
+    { name: "Secretary: Charisse Pena", position: "Secretary" },
     { name: "Treasurer: Jocelyn Langbid", position: "Treasurer" },
   ];
 
