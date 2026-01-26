@@ -27,6 +27,8 @@ body{
   background:var(--card);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
+  justify-content: center;
+  align-items: center;
   padding:20px;
 }
 
