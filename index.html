@@ -8,15 +8,10 @@
 
   <!-- Login background styles -->
   <style>
-    /* Apply a full-viewport background for the auth/login page.
-       NOTE: The Facebook URL provided is a page URL and may not load as a direct image.
-       Recommended: download the image and place it at assets/login-bg.jpg and use the local fallback below. */
     body.auth-bg {
       min-height: 100vh;
       margin: 0;
       background-image: url("assets/muni.jpg");
-      /* fallback / recommended local file (uncomment and use if you add the image to repo):
-         background-image: url("assets/login-bg.jpg"); */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -41,7 +36,7 @@
       z-index: 1;
     }
 
-    /* make the card slightly translucent and add backdrop blur for readability */
+    /* make the card has color and add backdrop blur for readability */
     .card {
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(6px);
@@ -95,17 +90,18 @@
     <section id="dashboard" class="hidden">
      <!-- Login background styles -->
   <style>
-      background-image: url("assets/muni.jpg");
+      
       body {
+        background-image: url("assets/muni.jpg");
             margin: 0;
             display: flex;
             height: 100vh; /* Full height */
             background-color: #f0f0f0; /* Optional light background */
         }
 
-        /* Container for the red box */
+        /* Container sa nawng */
         #sidebar {
-            width: 250px; /* Adjust as needed */
+            width: 250px; /* Adjust ra ug need */
             background-image: url('assets/logo.jpg'); /* Your background image */
             background-size: cover;
             background-repeat: no-repeat;
@@ -152,8 +148,7 @@
   </main>
 
   <script src="app.js"></script>
-  <!-- Small helper to remove the auth-bg class after login and add it back on logout.
-       This keeps the background only on the login/registration view. -->
+  <!-- Gap sa bg...This keeps the background only on the login/registration view. -->
   <script>
     // Remove background when user clicks "Login" (adjust if your app handles auth differently)
     const loginBtn = document.getElementById('login-btn');
