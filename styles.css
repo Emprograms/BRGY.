@@ -25,10 +25,10 @@ body{
 
 .card{
   background:var(--card);
+  justify-content: center; 
+      align-items: center;
   border-radius:var(--radius);
   box-shadow:var(--shadow);
-  justify-content: center;
-  align-items: center;
   padding:20px;
 }
 
