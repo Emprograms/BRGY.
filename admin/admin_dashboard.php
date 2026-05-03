@@ -21,7 +21,7 @@ $osy      = (int)$pdo->query("SELECT COUNT(*) c FROM residents WHERE is_osy=1")-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="/BMS/assets/style.css" />
+  <link rel="stylesheet" href="/BRGY./assets/style.css" />
 </head>
 <body>
   <div class="container">
@@ -31,9 +31,9 @@ $osy      = (int)$pdo->query("SELECT COUNT(*) c FROM residents WHERE is_osy=1")-
         <div class="muted">Welcome, <?= htmlspecialchars($_SESSION['user']['full_name']) ?> (Admin)</div>
       </div>
       <div class="row">
-        <a class="btn" href="/BMS/admin/residents.php">Residents</a>
-        <a class="btn primary" href="/BMS/admin/resident_add.php">+ Add Inhabitant</a>
-        <a class="btn danger" href="/BMS/auth/logout.php">Logout</a>
+        <a class="btn" href="/BRGY./admin/residents.php">Residents</a>
+        <a class="btn primary" href="/BRGY./admin/resident_add.php">+ Add Inhabitant</a>
+        <a class="btn danger" href="/BRGY./auth/logout.php">Logout</a>
       </div>
     </div>
 
