@@ -8,7 +8,7 @@ require_role('resident');
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Resident Profile</title>
-  <link rel="stylesheet" href="/barangay-system/assets/style.css" />
+  <link rel="stylesheet" href="C:\Users\Satoshi\Documents\xampp\htdocs\BRGY.\assets\style.css" />
 </head>
 <body>
   <div class="container">
@@ -18,7 +18,7 @@ require_role('resident');
         <div class="muted">Welcome, <?= htmlspecialchars($_SESSION['user']['full_name']) ?></div>
       </div>
       <div class="row">
-        <a class="btn danger" href="/barangay-system/auth/logout.php">Logout</a>
+        <a class="btn danger" href="C:\Users\Satoshi\Documents\xampp\htdocs\BRGY.\auth\logout.php">Logout</a>
       </div>
     </div>
 
