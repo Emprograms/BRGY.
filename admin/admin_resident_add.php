@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Add Resident</title>
-  <link rel="stylesheet" href="/BMS/assets/style.css" />
+  <link rel="stylesheet" href="/BRGY./assets/style.css" />
 </head>
 <body>
   <div class="container">
@@ -50,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="muted">Admin: <?= htmlspecialchars($_SESSION['user']['full_name']) ?></div>
       </div>
       <div class="row">
-        <a class="btn" href="/BMS/admin/dashboard.php">Dashboard</a>
-        <a class="btn" href="/BMS/admin/residents.php">Residents</a>
-        <a class="btn danger" href="/BMS/auth/logout.php">Logout</a>
+        <a class="btn" href="/BRGY./admin/dashboard.php">Dashboard</a>
+        <a class="btn" href="/BRGY./admin/residents.php">Residents</a>
+        <a class="btn danger" href="/BRGY./auth/logout.php">Logout</a>
       </div>
     </div>
 
