@@ -6,7 +6,7 @@
   <title>Barangay Bonbon Portal</title>
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Login background styles -->
+  <!-- Login/Register background styles -->
   <style>
     body.auth-bg {
       min-height: 100vh;
@@ -18,8 +18,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0;
     }
-    /* darkish overlay so content is readable */
+
     body.auth-bg::before {
       content: "";
       position: fixed;
@@ -29,77 +30,225 @@
       pointer-events: none;
     }
 
-    /* ensure main content sits above overlay */
     main.container {
       position: relative;
       z-index: 1;
     }
 
-    /* make the card has color and add backdrop blur for readability */
-    .card {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(6px);
-      border-radius: 8px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      padding: 20px;
-      max-width: 420px;
+    .auth-card {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      padding: 40px;
+      max-width: 450px;
       width: 95%;
     }
-    /* tighten spacing for the auth area on small screens */
+
     @media (max-width: 640px) {
-      .card { padding: 16px; }
+      .auth-card {
+        padding: 24px;
+        max-width: 100%;
+      }
     }
 
-    /* Hide forms by default */
-    .auth-form {
+    .auth-page {
       display: none;
     }
 
-    .auth-form.active {
+    .auth-page.active {
       display: block;
     }
-    
+
+    .auth-card h2 {
+      margin-top: 0;
+      margin-bottom: 24px;
+      color: #0f172a;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      padding: 12px 14px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+      font-family: inherit;
+    }
+
+    .form-group input:focus {
+      border-color: #2354a7;
+      box-shadow: 0 0 0 3px rgba(35, 84, 167, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: #b4b9c4;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #2354a7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #1a3d7a;
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .auth-footer a {
+      color: #2354a7;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .auth-footer a:hover {
+      color: #1a3d7a;
+      text-decoration: underline;
+    }
   </style>
- 
 </head>
 <body class="auth-bg">
   
   <main class="container">
    
-    <section id="auth" class="card">
-      <form class="tabs">
-        <button type="button" id="show-login" class="active">Login</button>
-        <button type="button" id="show-register">Register</button>
-      </form>
-      
-      <!-- Login Form -->
-      <form id="login-form" class="auth-form active" method="post" action="login.php">
+    <!-- LOGIN PAGE -->
+    <section id="login-page" class="auth-page active">
+      <div class="auth-card">
         <h2>Login</h2>
-        <label>Email</label>
-        <input id="login-email" type="email" placeholder="your@example.com" required />
-        <label>Password</label>
-        <input id="login-password" type="password" placeholder="password" required />
-        <button type="submit" class="primary">Login</button>
-        <p class="hint">No account? <a href="#" id="go-register">Register here</a></p>
-      </form>
-     
-      <!-- Register Form -->
-      <form id="register-form" class="auth-form" method="post" action="api_registration.php">
-        <h2>Register</h2>
-        <label>Name</label>
-        <input id="register-name" type="text" placeholder="Your Full Name" required />
-        <label>Email</label>
-        <input id="register-email" type="email" placeholder="you@example.com" required />
-        <label>Password</label>
-        <input id="register-password" type="password" placeholder="password" required />
-        <button type="submit" class="primary">Register</button>
-        <p class="hint">Already have an account? <a href="#" id="go-login">Login</a></p>
-      </form>
+        <form id="login-form" method="post" action="login.php">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input 
+              id="login-email" 
+              type="email" 
+              name="email"
+              placeholder="your@example.com" 
+              required 
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input 
+              id="login-password" 
+              type="password" 
+              name="password"
+              placeholder="Enter your password" 
+              required 
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button type="submit" class="btn-submit">Login</button>
+        </form>
+
+        <div class="auth-footer">
+          Don't have an account? <a id="switch-to-register">Register here</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Dashboard -->
-    <section id="dashboard" class="hidden">
+    <!-- REGISTER PAGE -->
+    <section id="register-page" class="auth-page">
+      <div class="auth-card">
+        <h2>Create Account</h2>
+        <form id="register-form" method="post" action="api_registration.php">
+          <div class="form-group">
+            <label for="register-name">Full Name</label>
+            <input 
+              id="register-name" 
+              type="text" 
+              name="name"
+              placeholder="Your full name" 
+              required 
+              autocomplete="name"
+            />
+          </div>
 
+          <div class="form-group">
+            <label for="register-email">Email Address</label>
+            <input 
+              id="register-email" 
+              type="email" 
+              name="email"
+              placeholder="your@example.com" 
+              required 
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input 
+              id="register-password" 
+              type="password" 
+              name="password"
+              placeholder="Create a password" 
+              required 
+              autocomplete="new-password"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="register-confirm">Confirm Password</label>
+            <input 
+              id="register-confirm" 
+              type="password" 
+              name="confirm_password"
+              placeholder="Confirm your password" 
+              required 
+              autocomplete="new-password"
+            />
+          </div>
+
+          <button type="submit" class="btn-submit">Register</button>
+        </form>
+
+        <div class="auth-footer">
+          Already have an account? <a id="switch-to-login">Login here</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD (shown after login) -->
+    <section id="dashboard" class="hidden">
       <header class="topbar">
         <h1>Barangay Officials</h1>
         <div class="top-actions">
@@ -134,62 +283,70 @@
         </section>
       </div>
     </section>
+
   </main>
 
   <script src="app.js"></script>
   <script>
-    // Tab switching between Login and Register
-    const showLoginBtn = document.getElementById('show-login');
-    const showRegisterBtn = document.getElementById('show-register');
+    // Page Navigation
+    const loginPage = document.getElementById('login-page');
+    const registerPage = document.getElementById('register-page');
+    const switchToRegister = document.getElementById('switch-to-register');
+    const switchToLogin = document.getElementById('switch-to-login');
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
-    const goRegisterLink = document.getElementById('go-register');
-    const goLoginLink = document.getElementById('go-login');
-
-    // Show Login Form
-    showLoginBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      loginForm.classList.add('active');
-      registerForm.classList.remove('active');
-      showLoginBtn.classList.add('active');
-      showRegisterBtn.classList.remove('active');
-    });
-
-    // Show Register Form
-    showRegisterBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      registerForm.classList.add('active');
-      loginForm.classList.remove('active');
-      showRegisterBtn.classList.add('active');
-      showLoginBtn.classList.remove('active');
-    });
-
-    // Quick links to switch forms
-    goRegisterLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      showRegisterBtn.click();
-    });
-
-    goLoginLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      showLoginBtn.click();
-    });
-
-    // Remove background when user logs in
-    const loginBtn = document.getElementById('login-form');
-    if (loginBtn) {
-      loginBtn.addEventListener('submit', () => {
-        document.body.classList.remove('auth-bg');
-      });
-    }
-     
-    // Add background back on logout button click
     const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        document.body.classList.add('auth-bg');
-      });
-    }
+    const dashboard = document.getElementById('dashboard');
+    const body = document.body;
+
+    // Switch to Register Page
+    switchToRegister.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginPage.classList.remove('active');
+      registerPage.classList.add('active');
+    });
+
+    // Switch to Login Page
+    switchToLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      registerPage.classList.remove('active');
+      loginPage.classList.add('active');
+    });
+
+    // Handle Login Form Submission
+    loginForm.addEventListener('submit', (e) => {
+      // Note: In production, validate and handle login here
+      // For now, we'll just remove the background when logged in
+      body.classList.remove('auth-bg');
+      loginPage.classList.remove('active');
+      dashboard.classList.remove('hidden');
+    });
+
+    // Handle Register Form Submission
+    registerForm.addEventListener('submit', (e) => {
+      // Validate passwords match
+      const password = document.getElementById('register-password').value;
+      const confirm = document.getElementById('register-confirm').value;
+
+      if (password !== confirm) {
+        e.preventDefault();
+        alert('Passwords do not match!');
+        return;
+      }
+
+      // Note: In production, validate and handle registration here
+      // After successful registration, you might auto-login or redirect to login
+    });
+
+    // Handle Logout
+    logoutBtn.addEventListener('click', () => {
+      body.classList.add('auth-bg');
+      dashboard.classList.add('hidden');
+      loginPage.classList.add('active');
+      registerPage.classList.remove('active');
+      loginForm.reset();
+      registerForm.reset();
+    });
   </script>
 </body>
 </html>
