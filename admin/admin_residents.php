@@ -34,7 +34,7 @@ $rows = $st->fetchAll();
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Residents</title>
-  <link rel="stylesheet" href="/barangay-system/assets/style.css" />
+  <link rel="stylesheet" href="/BRGY./assets/style.css" />
 </head>
 <body>
   <div class="container">
@@ -44,9 +44,9 @@ $rows = $st->fetchAll();
         <div class="muted">Search and manage inhabitants</div>
       </div>
       <div class="row">
-        <a class="btn" href="/barangay-system/admin/dashboard.php">Dashboard</a>
-        <a class="btn primary" href="/barangay-system/admin/resident_add.php">+ Add</a>
-        <a class="btn danger" href="/barangay-system/auth/logout.php">Logout</a>
+        <a class="btn" href="/BRGY./admin/dashboard.php">Dashboard</a>
+        <a class="btn primary" href="/BRGY./admin/resident_add.php">+ Add</a>
+        <a class="btn danger" href="/BRGY./auth/logout.php">Logout</a>
       </div>
     </div>
 
@@ -56,7 +56,7 @@ $rows = $st->fetchAll();
           <input name="q" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>" placeholder="Search name, household..." />
         </label>
         <button class="btn" type="submit">Search</button>
-        <a class="btn" href="/barangay-system/admin/residents.php">Clear</a>
+        <a class="btn" href="/BRGY./admin/residents.php">Clear</a>
       </form>
 
       <p class="muted" style="margin-top:.6rem">Showing <?= count($rows) ?> record(s)</p>
