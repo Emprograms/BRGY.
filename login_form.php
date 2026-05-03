@@ -33,7 +33,7 @@ unset($_SESSION['login_error']);
 
     <button id="login-btn" class="primary" type="submit">Login</button>
 
-    <p class="hint">No account? <a href="register_form.php" id="go-register">Register</a></p>
+    <p class="hint">No account? <a href="api_registration.php" id="go-register">Register</a></p>
   </form>
 </body>
 </html>
