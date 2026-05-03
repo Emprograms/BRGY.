@@ -37,7 +37,6 @@
 
     /* make the card has color and add backdrop blur for readability */
     .card {
-      
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(6px);
       border-radius: 8px;
@@ -45,11 +44,19 @@
       padding: 20px;
       max-width: 420px;
       width: 95%;
-      background-image: url("assets/muni.jpg");
     }
     /* tighten spacing for the auth area on small screens */
     @media (max-width: 640px) {
       .card { padding: 16px; }
+    }
+
+    /* Hide forms by default */
+    .auth-form {
+      display: none;
+    }
+
+    .auth-form.active {
+      display: block;
     }
     
   </style>
@@ -61,32 +68,35 @@
    
     <section id="auth" class="card">
       <form class="tabs">
-        <button id="show-login" class="active">Login</button>
-        <button id="show-register">Register</button>
+        <button type="button" id="show-login" class="active">Login</button>
+        <button type="button" id="show-register">Register</button>
       </form>
       
-      <form method="post" action="login.php">
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form active" method="post" action="login.php">
         <h2>Login</h2>
-        <label>Name</label>
-        <input id="login-name" type="Name" placeholder="Emman Sehas" />
         <label>Email</label>
-        <input id="login-email" type="email" placeholder="Emman@example.com" />
+        <input id="login-email" type="email" placeholder="your@example.com" required />
         <label>Password</label>
-        <input id="login-password" type="password" placeholder="password" />
-        <button id="login-btn" class="primary">Register</button>
-        <p class="hint">No account? <a href="api_registration.php" id="go-register">Register here</a></p>
+        <input id="login-password" type="password" placeholder="password" required />
+        <button type="submit" class="primary">Login</button>
+        <p class="hint">No account? <a href="#" id="go-register">Register here</a></p>
       </form>
      
-      <form method="post" action="api_registration.php">
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form" method="post" action="api_registration.php">
         <h2>Register</h2>
+        <label>Name</label>
+        <input id="register-name" type="text" placeholder="Your Full Name" required />
         <label>Email</label>
-        <input id="login-email" type="email" placeholder="you@example.com" />
+        <input id="register-email" type="email" placeholder="you@example.com" required />
         <label>Password</label>
-        <input id="login-password" type="password" placeholder="password" />
-        <button id="register-btn" class="primary">Login</button>
+        <input id="register-password" type="password" placeholder="password" required />
+        <button type="submit" class="primary">Register</button>
         <p class="hint">Already have an account? <a href="#" id="go-login">Login</a></p>
       </form>
     </section>
+
     <!-- Dashboard -->
     <section id="dashboard" class="hidden">
 
@@ -100,14 +110,14 @@
         </div>
         <nav id="burger-menu" class="menu hidden">
           <ul>
-             <li data-view="Population">Population</li>
+            <li data-view="Population">Population</li>
             <li data-view="updates">Accomplishments</li>
             <li data-view="ongoing">Ongoing Projects</li>
             <li data-view="permit">Permit Cost</li>
             <li data-view="clearance">Barangay Clearance</li>
             <li data-view="certificate">Barangay Certificate</li>
-            <li data-view="certificate">Cedula</li>
-            <li data-view="certificate">Certificate of Indigency</li>
+            <li data-view="cedula">Cedula</li>
+            <li data-view="indigency">Certificate of Indigency</li>
           </ul>
         </nav>
       </header>
@@ -120,7 +130,6 @@
           <h2 id="panel-title">Welcome</h2>
           <div id="panel-body">
             <p>Welcome to the Barangay Bonbon Portal.</p>
-
           </div>
         </section>
       </div>
@@ -128,12 +137,48 @@
   </main>
 
   <script src="app.js"></script>
-  <!-- Gap sa bg...This keeps the background only on the login/registration view. -->
   <script>
-    // Remove background when user clicks "Login" (adjust if your app handles auth differently)
-    const loginBtn = document.getElementById('login-btn');
+    // Tab switching between Login and Register
+    const showLoginBtn = document.getElementById('show-login');
+    const showRegisterBtn = document.getElementById('show-register');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const goRegisterLink = document.getElementById('go-register');
+    const goLoginLink = document.getElementById('go-login');
+
+    // Show Login Form
+    showLoginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+      showLoginBtn.classList.add('active');
+      showRegisterBtn.classList.remove('active');
+    });
+
+    // Show Register Form
+    showRegisterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
+      showRegisterBtn.classList.add('active');
+      showLoginBtn.classList.remove('active');
+    });
+
+    // Quick links to switch forms
+    goRegisterLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showRegisterBtn.click();
+    });
+
+    goLoginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showLoginBtn.click();
+    });
+
+    // Remove background when user logs in
+    const loginBtn = document.getElementById('login-form');
     if (loginBtn) {
-      loginBtn.addEventListener('click', () => {
+      loginBtn.addEventListener('submit', () => {
         document.body.classList.remove('auth-bg');
       });
     }
