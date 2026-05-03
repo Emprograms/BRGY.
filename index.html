@@ -58,20 +58,22 @@
 <body class="auth-bg">
   
   <main class="container">
-    //buttons
+    /*buttons*/
     <section id="auth" class="card">
       <div class="tabs">
         <button id="show-login" class="active">Login</button>
         <button id="show-register">Register</button>
       </div>
-      //login input
+      /*login input*/
       <form method="post" action="login.php">
         <h2>Login</h2>
+        <label>Name</label>
+        <input id="Name" type="Name" placeholder="Emman Sehas" />
         <label>Email</label>
-        <input id="login-email" type="email" placeholder="you@example.com" />
+        <input id="login-email" type="email" placeholder="Emman@example.com" />
         <label>Password</label>
         <input id="login-password" type="password" placeholder="password" />
-        <button id="login-btn" class="primary">Login</button>
+        <button id="registration button" class="primary">Register</button>
         <p class="hint">No account? <a href="api_registration.php" id="go-register">Register here</a></p>
       </form>
       //registration 
