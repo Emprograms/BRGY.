@@ -74,12 +74,16 @@
         <button id="login-btn" class="primary">Login</button>
         <p class="hint">No account? <a href="api_registration.php" id="go-register">Register here</a></p>
       </form>
-
-      <div id="register-form" class="form hidden">
+      //registration 
+      <form method="post" action="api_registration.php>
         <h2>Register</h2>
-        <link rel="register" href="api_registration.php" />
+        <label>Email</label>
+        <input id="login-email" type="email" placeholder="you@example.com" />
+        <label>Password</label>
+        <input id="login-password" type="password" placeholder="password" />
+        <button id="login-btn" class="primary">Login</button>
         <p class="hint">Already have an account? <a href="#" id="go-login">Login</a></p>
-      </div>
+      </form>
     </section>
     <!-- Dashboard -->
     <section id="dashboard" class="hidden">
